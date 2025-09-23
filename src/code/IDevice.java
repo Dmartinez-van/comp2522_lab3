@@ -4,7 +4,19 @@
  */
 abstract public class IDevice
 {
-    public IDevice()
+
+    private String purpose;
+
+    public IDevice(final String purpose)
     {
+
+        this.purpose = purpose;
     }
+
+    public String getPurpose()
+    {
+        return purpose;
+    }
+
+    abstract void printDetails();
 }
