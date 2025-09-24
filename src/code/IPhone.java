@@ -1,12 +1,143 @@
 /**
- * @author David Martinez, Daniel Do
+ * The {@link #IPhone}'s purpose is "talking"
+ * Extends the IDevice class.
+ *
+ * @author David Martinez,
+ *         Daniel Do
  * @version 1.0
  */
 public class IPhone extends IDevice
 {
-    public IPhone() {
-            super();
+    private final static double MIN_MINUTES_REQUIRED = 1.0;
+
+    private String planCarrier;
+    private double remainingPlanMinutes;
+
+    /**
+     * Constructs an {@link #IPhone} object with the specified purpose,
+     * remaining plan minutes, and plan carrier.
+     *
+     * @param purpose              the purpose of the device (should be "talking")
+     * @param remainingPlanMinutes the number of minutes remaining on the plan;
+     *                             must be at least {@value MIN_MINUTES_REQUIRED}
+     * @param planCarrier          the carrier for the plan; must not be null or blank
+     */
+    public IPhone(final String purpose,
+                  final double remainingPlanMinutes,
+                  final String planCarrier)
+    {
+        super(purpose);
+
+        checkRemainingPlanMinutes(remainingPlanMinutes);
+        checkPlanCarrier(planCarrier);
+
+        this.remainingPlanMinutes = remainingPlanMinutes;
+        this.planCarrier = planCarrier;
+    }
+
+    private void checkRemainingPlanMinutes(final double remainingPlanMinutes)
+    {
+        if (remainingPlanMinutes < MIN_MINUTES_REQUIRED)
+        {
+            final StringBuilder errMsg;
+            errMsg = new StringBuilder();
+
+            errMsg.append("You must have more than ");
+            errMsg.append(MIN_MINUTES_REQUIRED);
+            errMsg.append(" minutes on your plan");
+
+            throw new IllegalArgumentException(errMsg.toString());
+        }
+    }
+
+    private void checkPlanCarrier(final String planCarrier)
+    {
+        // In reality planCarrier should be checking some sort of list of valid carriers
+        if (planCarrier == null || planCarrier.isBlank())
+        {
+            throw new IllegalArgumentException("Carrier must not be null or blank");
+        }
+    }
+
+    /**
+     * Prints the {@link #IPhone}'s instance variables to the screen
+     */
+    @Override
+    public void printDetails()
+    {
+        // Can't we just use the newly overriden .toString() method and
+        // sout the string in this method?
+
+//        final StringBuilder output;
+//        output = new StringBuilder();
+//
+//        output.append(super.toString());
+//        output.append("\nRemaining Plan Minutes: ");
+//        output.append(remainingPlanMinutes);
+//        output.append("\nPlan Carrier: ");
+//        output.append(planCarrier);
+
+        // By default sout will call .toString() on this
+        System.out.println(this);
+    }
+
+    /**
+     * Returns the {@link #IPhone}'s instance variables as a string
+     *
+     * @return a string of the {@link #IPhone}'s instance variables
+     */
+    @Override
+    public String toString()
+    {
+        final StringBuilder output;
+        output = new StringBuilder();
+
+        output.append(super.toString());
+        output.append("\nRemaining Plan Minutes: ");
+        output.append(remainingPlanMinutes);
+        output.append("\nPlan Carrier: ");
+        output.append(planCarrier);
+
+        return output.toString();
+    }
+
+    /**
+     * Compares this {@link #IPhone} to the specified object for equality.
+     * Two {@link #IPhone} objects are considered equal if they are of
+     * the same class and have the same value for {@link #remainingPlanMinutes}.
+     *
+     * @param o the object to compare with this {@link #IPhone}
+     * @return true if the specified object is an {@link #IPhone} with the same
+     *         {@link #remainingPlanMinutes}, false otherwise
+     */
+    @Override
+    public boolean equals(final Object o)
+    {
+        if (o == null)
+        {
+            return false;
         }
 
-        // Add IPhone-specific methods and fields here
+        if (!(o.getClass().equals(this.getClass())))
+        {
+            return false;
+        }
+
+        final IPhone that;
+        that = (IPhone) o;
+
+        return this.remainingPlanMinutes == that.remainingPlanMinutes;
+    }
+
+    /**
+     * Returns the hash code value for this {@link #IPhone}.
+     * The hash code is based on the {@link #remainingPlanMinutes} value.
+     *
+     * @return the hash code value for this {@link #IPhone}
+     */
+    @Override
+    public int hashCode()
+    {
+        return (int) remainingPlanMinutes;
+    }
 }
