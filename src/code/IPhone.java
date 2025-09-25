@@ -1,5 +1,5 @@
 /**
- * The {@link #IPhone}'s purpose is "talking"
+ * The {@link #IPhone}'s purpose is {@value IPHONE_PURPOSE}
  * Extends the IDevice class.
  *
  * @author David Martinez,
@@ -8,7 +8,8 @@
  */
 public class IPhone extends IDevice
 {
-    private final static double MIN_MINUTES_REQUIRED = 1.0;
+    private static final String IPHONE_PURPOSE = "talking";
+    private static final double MIN_MINUTES_REQUIRED = 1.0;
 
     private String planCarrier;
     private double remainingPlanMinutes;
@@ -17,16 +18,14 @@ public class IPhone extends IDevice
      * Constructs an {@link #IPhone} object with the specified purpose,
      * remaining plan minutes, and plan carrier.
      *
-     * @param purpose              the purpose of the device (should be "talking")
      * @param remainingPlanMinutes the number of minutes remaining on the plan;
      *                             must be at least {@value MIN_MINUTES_REQUIRED}
      * @param planCarrier          the carrier for the plan; must not be null or blank
      */
-    public IPhone(final String purpose,
-                  final double remainingPlanMinutes,
+    public IPhone(final double remainingPlanMinutes,
                   final String planCarrier)
     {
-        super(purpose);
+        super(IPHONE_PURPOSE);
 
         checkRemainingPlanMinutes(remainingPlanMinutes);
         checkPlanCarrier(planCarrier);
@@ -35,6 +34,18 @@ public class IPhone extends IDevice
         this.planCarrier = planCarrier;
     }
 
+    /**
+     * Validates the remaining plan minutes for the {@link #IPhone}.
+     * <p>
+     * This method checks if the provided value is greater than or equal to
+     * {@value MIN_MINUTES_REQUIRED}.
+     * <p>
+     *
+     * @param remainingPlanMinutes the number of minutes remaining on the plan;
+     *                             must be at least {@value MIN_MINUTES_REQUIRED}
+     * @throws IllegalArgumentException if {@code remainingPlanMinutes} is less than
+     *                                  {@value MIN_MINUTES_REQUIRED}
+     */
     private void checkRemainingPlanMinutes(final double remainingPlanMinutes)
     {
         if (remainingPlanMinutes < MIN_MINUTES_REQUIRED)
