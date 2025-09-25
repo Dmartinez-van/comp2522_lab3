@@ -8,7 +8,7 @@
 abstract public class IDevice
 {
 
-    private String purpose;
+    private final String purpose;
 
     /**
      * Constructs an IDevice with a specific purpose.
@@ -20,7 +20,17 @@ abstract public class IDevice
      */
     public IDevice(final String purpose)
     {
+        checkPurpose(purpose);
+
         this.purpose = purpose;
+    }
+
+    private void checkPurpose(final String purpose)
+    {
+        if (purpose == null || purpose.isBlank())
+        {
+            throw new IllegalArgumentException("Purpose must not be null or blank.");
+        }
     }
 
     /**
