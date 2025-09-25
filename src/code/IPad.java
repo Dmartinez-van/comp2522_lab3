@@ -12,8 +12,18 @@ public final class IPad extends IDevice
                 final String OSVersion)
     {
         super("learning");
-        this.hasCase = hasCase;
+        this.hasCase   = hasCase;
         this.OSVersion = OSVersion;
+    }
+
+    /**
+     * Returns the operating system version of this iPad.
+     *
+     * @return the OS version String of this iPad
+     */
+    public String getOSVersion()
+    {
+        return OSVersion;
     }
 
     void printDetails()
@@ -39,22 +49,36 @@ public final class IPad extends IDevice
 
         ipadDetails.append(super.toString());
         ipadDetails.append("IPad{");
-        ipadDetails.append("hasCase=").append(hasCase);
-        ipadDetails.append(", OSVersion='").append(OSVersion).append('\'');
+        ipadDetails.append("hasCase=");
+        ipadDetails.append(hasCase);
+        ipadDetails.append(", OSVersion='");
+        ipadDetails.append(OSVersion);
+        ipadDetails.append('\'');
         ipadDetails.append("} ");
 
         return ipadDetails.toString();
     }
 
+    /**
+     * Determines whether this IPad instance is equal to another object.
+     *
+     * @param o the object to compare with this IPad instance
+     * @return true if the specified object is an IPad with the same OS version
+     */
     @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IPad)) return false;
-        if (!super.equals(o)) return false;
-
-        IPad iPad = (IPad) o;
-
-        if (hasCase != iPad.hasCase) return false;
-        return OSVersion != null ? OSVersion.equals(iPad.OSVersion) : iPad.OSVersion == null;
+    public boolean equals(final Object o)
+    {
+        if (o == null)
+        {
+            return false;
+        }
+        if (!(o.getClass().equals(this.getClass())))
+        {
+            return false;
+        }
+        final IPad that = (IPad) o;
+        return this.OSVersion.equals(that.getOSVersion());
+//        if (hasCase != iPad.hasCase) return false;
+//        return OSVersion != null ? OSVersion.equals(iPad.OSVersion) : iPad.OSVersion == null;
     }
 }
