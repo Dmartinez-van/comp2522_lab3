@@ -1,9 +1,15 @@
+import java.util.Objects;
+
 /**
+ * Represents an iPad device with instance variables for whether it has a case and the operating system version.
+ * This class extends IDevice and provides methods to access and modify iPad-specific details.
+ *
  * @author David Martinez, Daniel Do
  * @version 1.0
  */
 public final class IPad extends IDevice
 {
+    public static final String IPAD_PURPOSE = "learning";
 
     private boolean hasCase;
     private String OSVersion;
@@ -11,7 +17,7 @@ public final class IPad extends IDevice
     public IPad(final boolean hasCase,
                 final String OSVersion)
     {
-        super("learning");
+        super(IPAD_PURPOSE);
         this.hasCase   = hasCase;
         this.OSVersion = OSVersion;
     }
@@ -26,13 +32,22 @@ public final class IPad extends IDevice
         return OSVersion;
     }
 
-    void printDetails()
+    /**
+     * Setter for whether this iPad has a protective case.
+     *
+     * @param hasCase true if the iPad has a case, false otherwise
+     */
+    public void setHasCase(final boolean hasCase)
     {
-        final StringBuilder details;
+        this.hasCase = hasCase;
+    }
 
-        details = new StringBuilder();
-
-        System.out.println(details.toString());
+    /**
+     * Prints the details of this IPad instance to the console.
+     */
+    public void printDetails()
+    {
+        System.out.println(this);
     }
 
     /**
@@ -76,9 +91,21 @@ public final class IPad extends IDevice
         {
             return false;
         }
-        final IPad that = (IPad) o;
+        final IPad that;
+        that = (IPad) o;
+
         return this.OSVersion.equals(that.getOSVersion());
-//        if (hasCase != iPad.hasCase) return false;
-//        return OSVersion != null ? OSVersion.equals(iPad.OSVersion) : iPad.OSVersion == null;
+    }
+
+    /**
+     * Returns the hash code value for this IPad instance.
+     * The hash code is computed based on the OS version String.
+     *
+     * @return the hash code value for this IPad instance, based on OS version
+     */
+    @Override
+    public int hashCode()
+    {
+        return Objects.hashCode(OSVersion);
     }
 }
