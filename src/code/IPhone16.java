@@ -1,5 +1,7 @@
 /**
- * {@link IPhone16}'s purpose is "talking", but with more style.
+ * Represents an IPhone 16 device with instance variables for whether it has a {@link #highResCamera}
+ * and its {@link #memoryGigabytes} ({@value MODEL_256_GB}GB or {@value MODEL_512_GB}GB).
+ * This class extends IPhone and provides methods to access and modify IPhone16-specific details.
  *
  * @author David Martinez,
  * Daniel Do
@@ -66,10 +68,17 @@ public class IPhone16 extends IPhone
     }
 
     /**
+     * Prints the {@link #IPhone16}'s instance variables to the screen
+     */
+    @Override
+    public void printDetails()
+    {
+        System.out.println(this);
+    }
+
+    /**
      * Returns a String representation of this IPhone16 object, including
      * whether it has a high resolution camera and its memory amount.
-     * The format is: IPhone16{hasHighResolutionCamera=true,
-     * Memory in Gigabytes=256GB} plus the superclass details.
      *
      * @return a String describing this IPhone16 instance
      */
@@ -80,24 +89,13 @@ public class IPhone16 extends IPhone
         iphone16String = new StringBuilder();
 
         iphone16String.append(super.toString());
-        iphone16String.append("IPhone 16{");
-        iphone16String.append("hasHighResolutionCamera=");
+        iphone16String.append("\nHas High Resolution Camera: ");
         iphone16String.append(highResCamera);
-        iphone16String.append(", Memory in Gigabytes=");
+        iphone16String.append("\nMemory: ");
         iphone16String.append(memoryGigabytes);
         iphone16String.append("GB");
-        iphone16String.append("} ");
 
         return iphone16String.toString();
-    }
-
-    /**
-     * Prints the {@link #IPhone16}'s instance variables to the screen
-     */
-    @Override
-    public void printDetails()
-    {
-        System.out.println(this);
     }
 
     /**

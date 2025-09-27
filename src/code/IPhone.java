@@ -1,6 +1,7 @@
 /**
- * The {@code IPhone}'s purpose is "talking"
- * Extends the IDevice class.
+ * Represents an IPhone device with instance variables for its {@link #planCarrier} and
+ * its {@link #remainingPlanMinutes} (must be greater than {@value MIN_MINUTES_REQUIRED}).
+ * This class extends IDevice and provides methods to access and modify IPhone-specific details.
  *
  * @author David Martinez,
  *         Daniel Do
@@ -15,7 +16,7 @@ public class IPhone extends IDevice
     private final double remainingPlanMinutes;
 
     /**
-     * Constructs an {@code IPhone} object with the specified purpose,
+     * Constructs an {@code IPhone} object with the purpose {@value #IPHONE_PURPOSE},
      * remaining plan minutes, and plan carrier.
      *
      * @param remainingPlanMinutes the number of minutes remaining on the plan;
@@ -80,23 +81,24 @@ public class IPhone extends IDevice
     }
 
     /**
-     * Returns the {@link #IPhone}'s instance variables as a string
+     * Returns a String representation of this IPhone object,
+     * including its remaining plan minutes and its plan carrier.
      *
-     * @return a string of the {@link #IPhone}'s instance variables
+     * @return a String describing this IPhone instance
      */
     @Override
     public String toString()
     {
-        final StringBuilder output;
-        output = new StringBuilder();
+        final StringBuilder iphoneString;
+        iphoneString = new StringBuilder();
 
-        output.append(super.toString());
-        output.append("\nRemaining Plan Minutes: ");
-        output.append(remainingPlanMinutes);
-        output.append("\nPlan Carrier: ");
-        output.append(planCarrier);
+        iphoneString.append(super.toString());
+        iphoneString.append("\nRemaining Plan Minutes: ");
+        iphoneString.append(remainingPlanMinutes);
+        iphoneString.append("\nPlan Carrier: ");
+        iphoneString.append(planCarrier);
 
-        return output.toString();
+        return iphoneString.toString();
     }
 
     /**
