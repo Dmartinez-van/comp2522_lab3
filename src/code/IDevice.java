@@ -7,7 +7,6 @@
  */
 abstract public class IDevice
 {
-
     private final String purpose;
 
     /**

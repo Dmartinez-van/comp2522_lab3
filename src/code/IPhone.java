@@ -8,8 +8,8 @@
  */
 public class IPhone extends IDevice
 {
-    private final static double MIN_MINUTES_REQUIRED = 1.0;
-    private final static String IPHONE_PURPOSE       = "Talking";
+    private static final double MIN_MINUTES_REQUIRED = 1.0;
+    private static final String IPHONE_PURPOSE       = "Talking";
 
     private final String planCarrier;
     private final double remainingPlanMinutes;
