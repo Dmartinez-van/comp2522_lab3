@@ -1,5 +1,7 @@
+import java.util.Objects;
+
 /**
- * The {@link #IPhone}'s purpose is "talking"
+ * The {@code IPhone}'s purpose is "talking"
  * Extends the IDevice class.
  *
  * @author David Martinez,
@@ -9,24 +11,23 @@
 public class IPhone extends IDevice
 {
     private final static double MIN_MINUTES_REQUIRED = 1.0;
+    private final static String IPHONE_PURPOSE       = "Talking";
 
-    private String planCarrier;
-    private double remainingPlanMinutes;
+    private final String planCarrier;
+    private final double remainingPlanMinutes;
 
     /**
-     * Constructs an {@link #IPhone} object with the specified purpose,
+     * Constructs an {@code IPhone} object with the specified purpose,
      * remaining plan minutes, and plan carrier.
      *
-     * @param purpose              the purpose of the device (should be "talking")
      * @param remainingPlanMinutes the number of minutes remaining on the plan;
      *                             must be at least {@value MIN_MINUTES_REQUIRED}
      * @param planCarrier          the carrier for the plan; must not be null or blank
      */
-    public IPhone(final String purpose,
-                  final double remainingPlanMinutes,
+    public IPhone(final double remainingPlanMinutes,
                   final String planCarrier)
     {
-        super(purpose);
+        super(IPHONE_PURPOSE);
 
         checkRemainingPlanMinutes(remainingPlanMinutes);
         checkPlanCarrier(planCarrier);
@@ -65,19 +66,6 @@ public class IPhone extends IDevice
     @Override
     public void printDetails()
     {
-        // Can't we just use the newly overriden .toString() method and
-        // sout the string in this method?
-
-//        final StringBuilder output;
-//        output = new StringBuilder();
-//
-//        output.append(super.toString());
-//        output.append("\nRemaining Plan Minutes: ");
-//        output.append(remainingPlanMinutes);
-//        output.append("\nPlan Carrier: ");
-//        output.append(planCarrier);
-
-        // By default sout will call .toString() on this
         System.out.println(this);
     }
 
@@ -99,6 +87,16 @@ public class IPhone extends IDevice
         output.append(planCarrier);
 
         return output.toString();
+    }
+
+    /**
+     * Gets IPhone's {@link #remainingPlanMinutes}
+     *
+     * @return {@link #remainingPlanMinutes} as double
+     */
+    public double getRemainingPlanMinutes()
+    {
+        return remainingPlanMinutes;
     }
 
     /**
@@ -126,7 +124,7 @@ public class IPhone extends IDevice
         final IPhone that;
         that = (IPhone) o;
 
-        return this.remainingPlanMinutes == that.remainingPlanMinutes;
+        return this.getRemainingPlanMinutes() == that.getRemainingPlanMinutes();
     }
 
     /**
@@ -138,6 +136,9 @@ public class IPhone extends IDevice
     @Override
     public int hashCode()
     {
-        return (int) remainingPlanMinutes;
+        final int hashFromRPM;
+        hashFromRPM = Double.hashCode(remainingPlanMinutes);
+
+        return hashFromRPM;
     }
 }
