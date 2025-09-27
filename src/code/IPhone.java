@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 /**
  * The {@code IPhone}'s purpose is "talking"
  * Extends the IDevice class.
@@ -36,6 +34,18 @@ public class IPhone extends IDevice
         this.planCarrier = planCarrier;
     }
 
+    /**
+     * Validates the remaining plan minutes for the {@link #IPhone}.
+     * <p>
+     * This method checks if the provided value is greater than or equal to
+     * {@value MIN_MINUTES_REQUIRED}.
+     * <p>
+     *
+     * @param remainingPlanMinutes the number of minutes remaining on the plan;
+     *                             must be at least {@value MIN_MINUTES_REQUIRED}
+     * @throws IllegalArgumentException if {@code remainingPlanMinutes} is less than
+     *                                  {@value MIN_MINUTES_REQUIRED}
+     */
     private void checkRemainingPlanMinutes(final double remainingPlanMinutes)
     {
         if (remainingPlanMinutes < MIN_MINUTES_REQUIRED)
