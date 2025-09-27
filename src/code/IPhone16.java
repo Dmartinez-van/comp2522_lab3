@@ -92,6 +92,15 @@ public class IPhone16 extends IPhone
     }
 
     /**
+     * Prints the {@link #IPhone16}'s instance variables to the screen
+     */
+    @Override
+    public void printDetails()
+    {
+        System.out.println(this);
+    }
+
+    /**
      * Determines equality based on 2 factors:
      * 1. remaining plan minutes
      * 2. has high resolution camera
