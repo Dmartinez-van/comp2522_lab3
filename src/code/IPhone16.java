@@ -16,13 +16,13 @@ public class IPhone16 extends IPhone
     private final int memoryGigabytes;
 
     /**
-     * Constructor for IPhone16
+     * Constructor for {@link IPhone16} Class.
      *
      * @param remainingPlanMinutes the remaining minutes in phone's plan
      * @param planCarrier the phone company name
      * @param highResCamera whether this instance has a high-res camera or not
-     * @param memoryGigabytes the amount of memory for the phone, which is
-     *                        either {@value MODEL_256_GB}GB or {@value MODEL_512_GB}GB
+     * @param memoryGigabytes the amount of memory for the phone
+     *                        (either {@value MODEL_256_GB}GB or {@value MODEL_512_GB}GB)
      */
     IPhone16(final Double remainingPlanMinutes,
              final String planCarrier,
@@ -31,13 +31,16 @@ public class IPhone16 extends IPhone
     {
         super(remainingPlanMinutes, planCarrier);
 
-        // No checker for highResCamera needed.
         checkMemoryGB(memoryGigabytes);
 
-        this.highResCamera = highResCamera;
+        this.highResCamera   = highResCamera;
         this.memoryGigabytes = memoryGigabytes;
     }
 
+    /*
+     * Validator that checks if the memory amount is either
+     * {@value MODEL_256_GB}GB or {@value MODEL_512_GB}GB.
+     */
     private void checkMemoryGB(int memoryGigabytes)
     {
         if (memoryGigabytes != MODEL_512_GB && memoryGigabytes != MODEL_256_GB)
@@ -47,10 +50,9 @@ public class IPhone16 extends IPhone
     }
 
     /**
-     * Gets whether this IPhone16 has a high resolution camera or not.
+     * Gettter for whether the IPhone16 has a high resolution camera or not.
      *
-     * @return a boolean indicating true if phone does have high-res camera, and
-     * false if it doesn't.
+     * @return true if phone does have high-res camera
      */
     public boolean isHighResCamera()
     {
@@ -58,9 +60,9 @@ public class IPhone16 extends IPhone
     }
 
     /**
-     * Gets the amount of memory this IPhone16 has.
+     * Getter for the amount of memory the IPhone16 has.
      *
-     * @return an int amount of memory for this IPhone16; units: GB
+     * @return the amount of memory the IPhone16 has in gigabytes
      */
     public int getMemoryGigabytes()
     {
@@ -77,6 +79,7 @@ public class IPhone16 extends IPhone
     }
 
     /**
+     *
      * Returns a String representation of this IPhone16 object, including
      * whether it has a high resolution camera and its memory amount.
      *
@@ -99,10 +102,8 @@ public class IPhone16 extends IPhone
     }
 
     /**
-     * Determines equality based on 2 factors:
-     * 1. remaining plan minutes
-     * 2. has high resolution camera
-     * Both fields must be the same to be considered equal objects.
+     * equals implementation that considers two IPhone16 objects equal
+     * if they have the same remaining plan minutes and the same camera quality.
      *
      * @param o the object to compare with this {@link #IPhone}
      * @return true if IPhone16s are equal or not.
@@ -130,9 +131,9 @@ public class IPhone16 extends IPhone
     }
 
     /**
-     * Hashes the remaining minutes to an int for this IPhone16.
+     * Hashes the IPhone16's remaining plan minutes to an int value.
      *
-     * @return a hashCode int
+     * @return the IPhone16's hash code
      */
     @Override
     public int hashCode()

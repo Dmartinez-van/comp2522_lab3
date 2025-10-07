@@ -1,6 +1,6 @@
 /**
- * Represents an IPhone device with instance variables for its {@link #planCarrier} and
- * its {@link #remainingPlanMinutes} (must be greater than {@value MIN_MINUTES_REQUIRED}).
+ * A class that represents an IPhone device with instance variables for its {@link #planCarrier}
+ * and its {@link #remainingPlanMinutes} (must be greater than {@value MIN_MINUTES_REQUIRED}).
  * This class extends IDevice and provides methods to access and modify IPhone-specific details.
  *
  * @author David Martinez,
@@ -16,8 +16,7 @@ public class IPhone extends IDevice
     private final double remainingPlanMinutes;
 
     /**
-     * Constructs an {@code IPhone} object with the purpose {@value #IPHONE_PURPOSE},
-     * remaining plan minutes, and plan carrier.
+     * Constructor for the {@code IPhone} Class.
      *
      * @param remainingPlanMinutes the number of minutes remaining on the plan;
      *                             must be at least {@value MIN_MINUTES_REQUIRED}
@@ -35,17 +34,9 @@ public class IPhone extends IDevice
         this.planCarrier = planCarrier;
     }
 
-    /**
-     * Validates the remaining plan minutes for the {@link #IPhone}.
-     * <p>
-     * This method checks if the provided value is greater than or equal to
-     * {@value MIN_MINUTES_REQUIRED}.
-     * <p>
-     *
-     * @param remainingPlanMinutes the number of minutes remaining on the plan;
-     *                             must be at least {@value MIN_MINUTES_REQUIRED}
-     * @throws IllegalArgumentException if {@code remainingPlanMinutes} is less than
-     *                                  {@value MIN_MINUTES_REQUIRED}
+    /*
+     * Validator that checks if the remaining plan minutes are not less than
+     * {@value MIN_MINUTES_REQUIRED}. Throws IllegalArgumentException if invalid.
      */
     private void checkRemainingPlanMinutes(final double remainingPlanMinutes)
     {
@@ -62,6 +53,10 @@ public class IPhone extends IDevice
         }
     }
 
+    /*
+     * Validator that checks if the plan carrier is not null or blank.
+     * Throws IllegalArgumentException if invalid.
+     */
     private void checkPlanCarrier(final String planCarrier)
     {
         // In reality planCarrier should be checking some sort of list of valid carriers
@@ -72,7 +67,7 @@ public class IPhone extends IDevice
     }
 
     /**
-     * Prints the {@link #IPhone}'s instance variables to the screen
+     * Prints the {@link #IPhone}'s instance variables to the screen.
      */
     @Override
     public void printDetails()
@@ -102,7 +97,7 @@ public class IPhone extends IDevice
     }
 
     /**
-     * Gets IPhone's {@link #remainingPlanMinutes}
+     * Getter for an IPhone's remaining plan minutes.
      *
      * @return {@link #remainingPlanMinutes} as double
      */
@@ -112,13 +107,12 @@ public class IPhone extends IDevice
     }
 
     /**
-     * Compares this {@link #IPhone} to the specified object for equality.
-     * Two {@link #IPhone} objects are considered equal if they are of
-     * the same class and have the same value for {@link #remainingPlanMinutes}.
+     * equals implementation that considers two {@link IPhone} objects equal
+     * if they have the same value for {@link #remainingPlanMinutes}.
      *
      * @param o the object to compare with this {@link #IPhone}
      * @return true if the specified object is an {@link #IPhone} with the same
-     *         {@link #remainingPlanMinutes}, false otherwise
+     *         {@link #remainingPlanMinutes}
      */
     @Override
     public boolean equals(final Object o)
@@ -140,7 +134,7 @@ public class IPhone extends IDevice
     }
 
     /**
-     * Returns the hash code value for this {@link #IPhone}.
+     * Hash code implementation for the {@link #IPhone} class.
      * The hash code is based on the {@link #remainingPlanMinutes} value.
      *
      * @return the hash code value for this {@link #IPhone}

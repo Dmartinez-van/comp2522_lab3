@@ -15,6 +15,13 @@ public final class IPad extends IDevice
     private boolean hasCase;
     private String  OSVersion;
 
+    /**
+     * Constructor for the IPad class.
+     *
+     * @param hasCase   true if the iPad has a protective case
+     * @param OSVersion the operating system version of the iPad
+     * @throws IllegalArgumentException if OSVersion is null or blank
+     */
     public IPad(final boolean hasCase,
                 final String OSVersion)
     {
@@ -52,7 +59,8 @@ public final class IPad extends IDevice
     }
 
     /**
-     * Returns a String representation of this IPad object, including whether it has a case and its OS version.
+     * Returns a String containing all the details of this IPad object
+     * including whether it has a case and its OS version.
      *
      * @return a String describing this IPad instance
      */

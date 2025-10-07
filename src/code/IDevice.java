@@ -34,7 +34,7 @@ abstract public class IDevice
     }
 
     /**
-     * Retrieves the purpose of this device.
+     * Getter for the purpose of this device.
      *
      * @return the purpose of the device as a String
      */
