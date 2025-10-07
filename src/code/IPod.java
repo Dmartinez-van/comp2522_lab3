@@ -1,8 +1,7 @@
 /**
- * The IPod's purpose is to listen to music.
- * Has a {@link #MIN_VOLUME_DB} and {@link #MIN_VOLUME_DB} which the
- * {@link #currentVolumeDB} must be between.
- * Extends the IDevice class.
+ * Represents an IPod device with instance variables for the {@link #numSongsStored} and
+ * its {@link #currentVolumeDB} (must be between {@link #MIN_VOLUME_DB} and {@link #MIN_VOLUME_DB}).
+ * This class extends IDevice and provides methods to access and modify IPod-specific details.
  *
  * @author David Martinez,
  *         Daniel Do
@@ -78,38 +77,28 @@ public final class IPod extends IDevice
     @Override
     public void printDetails()
     {
-        final StringBuilder detailsString;
-        detailsString = new StringBuilder();
-
-        detailsString.append("IPod Details:");
-        detailsString.append("\nPurpose: ");
-        detailsString.append(this.getPurpose());
-        detailsString.append("\nCurrent Volume (dB): ");
-        detailsString.append(currentVolumeDB);
-        detailsString.append("\nNumber of Songs Stored: ");
-        detailsString.append(numSongsStored);
-
-        System.out.println(detailsString);
+        System.out.println(this);
     }
 
     /**
-     * Returns a string of the IPod's instance variables.
+     * Returns a String representation of this IPod object, including its current volume
+     * and the number of songs it's storing.
      *
-     * @return a string summarizing the IPod instance variables
+     * @return a String describing this IPod instance
      */
     @Override
     public String toString()
     {
-        final StringBuilder msgBuilder;
-        msgBuilder = new StringBuilder();
+        final StringBuilder ipodString;
+        ipodString = new StringBuilder();
 
-        msgBuilder.append(super.toString());
-        msgBuilder.append("\nCurrent Volume (dB): ");
-        msgBuilder.append(currentVolumeDB);
-        msgBuilder.append("\nNumber of Songs Stored: ");
-        msgBuilder.append(numSongsStored);
+        ipodString.append(super.toString());
+        ipodString.append("\nCurrent Volume (dB): ");
+        ipodString.append(currentVolumeDB);
+        ipodString.append("\nNumber of Songs Stored: ");
+        ipodString.append(numSongsStored);
 
-        return msgBuilder.toString();
+        return ipodString.toString();
     }
 
     @Override

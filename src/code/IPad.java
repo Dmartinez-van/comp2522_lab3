@@ -1,7 +1,8 @@
 import java.util.Objects;
 
 /**
- * Represents an iPad device with instance variables for whether it has a case and the operating system version.
+ * Represents an iPad device with instance variables for whether
+ * it {@link #hasCase} and the {@link #OSVersion}.
  * This class extends IDevice and provides methods to access and modify iPad-specific details.
  *
  * @author David Martinez, Daniel Do
@@ -12,7 +13,7 @@ public final class IPad extends IDevice
     public static final String IPAD_PURPOSE = "learning";
 
     private boolean hasCase;
-    private String OSVersion;
+    private String  OSVersion;
 
     public IPad(final boolean hasCase,
                 final String OSVersion)
@@ -52,7 +53,6 @@ public final class IPad extends IDevice
 
     /**
      * Returns a String representation of this IPad object, including whether it has a case and its OS version.
-     * The format is: IPad{hasCase=true, OSVersion='16.4.1'} plus the superclass details.
      *
      * @return a String describing this IPad instance
      */
@@ -63,13 +63,10 @@ public final class IPad extends IDevice
         ipadDetails = new StringBuilder();
 
         ipadDetails.append(super.toString());
-        ipadDetails.append("IPad{");
-        ipadDetails.append("hasCase=");
+        ipadDetails.append("\nHas Case: ");
         ipadDetails.append(hasCase);
-        ipadDetails.append(", OSVersion='");
+        ipadDetails.append("\nOS Version: ");
         ipadDetails.append(OSVersion);
-        ipadDetails.append('\'');
-        ipadDetails.append("} ");
 
         return ipadDetails.toString();
     }

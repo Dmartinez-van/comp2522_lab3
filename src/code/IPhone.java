@@ -1,6 +1,7 @@
 /**
- * The {@link #IPhone}'s purpose is {@value IPHONE_PURPOSE}
- * Extends the IDevice class.
+ * Represents an IPhone device with instance variables for its {@link #planCarrier} and
+ * its {@link #remainingPlanMinutes} (must be greater than {@value MIN_MINUTES_REQUIRED}).
+ * This class extends IDevice and provides methods to access and modify IPhone-specific details.
  *
  * @author David Martinez,
  *         Daniel Do
@@ -8,14 +9,14 @@
  */
 public class IPhone extends IDevice
 {
-    private static final String IPHONE_PURPOSE = "talking";
     private static final double MIN_MINUTES_REQUIRED = 1.0;
+    private static final String IPHONE_PURPOSE       = "Talking";
 
-    private String planCarrier;
-    private double remainingPlanMinutes;
+    private final String planCarrier;
+    private final double remainingPlanMinutes;
 
     /**
-     * Constructs an {@link #IPhone} object with the specified purpose,
+     * Constructs an {@code IPhone} object with the purpose {@value #IPHONE_PURPOSE},
      * remaining plan minutes, and plan carrier.
      *
      * @param remainingPlanMinutes the number of minutes remaining on the plan;
@@ -76,40 +77,38 @@ public class IPhone extends IDevice
     @Override
     public void printDetails()
     {
-        // Can't we just use the newly overriden .toString() method and
-        // sout the string in this method?
-
-//        final StringBuilder output;
-//        output = new StringBuilder();
-//
-//        output.append(super.toString());
-//        output.append("\nRemaining Plan Minutes: ");
-//        output.append(remainingPlanMinutes);
-//        output.append("\nPlan Carrier: ");
-//        output.append(planCarrier);
-
-        // By default sout will call .toString() on this
         System.out.println(this);
     }
 
     /**
-     * Returns the {@link #IPhone}'s instance variables as a string
+     * Returns a String representation of this IPhone object,
+     * including its remaining plan minutes and its plan carrier.
      *
-     * @return a string of the {@link #IPhone}'s instance variables
+     * @return a String describing this IPhone instance
      */
     @Override
     public String toString()
     {
-        final StringBuilder output;
-        output = new StringBuilder();
+        final StringBuilder iphoneString;
+        iphoneString = new StringBuilder();
 
-        output.append(super.toString());
-        output.append("\nRemaining Plan Minutes: ");
-        output.append(remainingPlanMinutes);
-        output.append("\nPlan Carrier: ");
-        output.append(planCarrier);
+        iphoneString.append(super.toString());
+        iphoneString.append("\nRemaining Plan Minutes: ");
+        iphoneString.append(remainingPlanMinutes);
+        iphoneString.append("\nPlan Carrier: ");
+        iphoneString.append(planCarrier);
 
-        return output.toString();
+        return iphoneString.toString();
+    }
+
+    /**
+     * Gets IPhone's {@link #remainingPlanMinutes}
+     *
+     * @return {@link #remainingPlanMinutes} as double
+     */
+    public double getRemainingPlanMinutes()
+    {
+        return remainingPlanMinutes;
     }
 
     /**
@@ -137,7 +136,7 @@ public class IPhone extends IDevice
         final IPhone that;
         that = (IPhone) o;
 
-        return this.remainingPlanMinutes == that.remainingPlanMinutes;
+        return this.getRemainingPlanMinutes() == that.getRemainingPlanMinutes();
     }
 
     /**
@@ -149,6 +148,9 @@ public class IPhone extends IDevice
     @Override
     public int hashCode()
     {
-        return (int) remainingPlanMinutes;
+        final int hashFromRPM;
+        hashFromRPM = Double.hashCode(remainingPlanMinutes);
+
+        return hashFromRPM;
     }
 }
